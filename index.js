@@ -1,33 +1,54 @@
-function getPropertyHtml() {
-/*
-SUPER CHALLENGE 💪
+import { propertyForSaleArr } from "./properties/propertyForSaleArr.js";
+import { placeholderPropertyObj } from "./properties/placeholderPropertyObj.js";
 
-Render out a card for each of the properties in the propertyForSaleArr array (in the 'properties' folder). Each card should have an image, a property location, a price, a comment and the TOTAL property size in square metres (each object has an array with the size in square metres of the individual rooms).
+const properties = propertyForSaleArr;
+const placeholder = placeholderPropertyObj;
 
-If no array of properties is passed to getPropertyHtml, the placeholder property stored in placeholderPropertyObj (in the 'properties' folder) should be rendered instead.
+function getPropertyHtml(properties = [placeholder]) {
+  return properties
+    .map((p) => {
+      return `
+        <section class="card">
+            <img src="./images/${p.image}">
+            <div class="card-right">
+                <h2>${p.propertyLocation}</h2>
+                <h3>$${p.priceGBP}</h3>
+                <p>${p.comment}</p>
+                <h3>${p.roomsM2.reduce((c, t) => (c += t), 0)} m&sup2;</h3>
+            </div>
+        </section>     
+    `;
+    })
+    .join("");
+  /*
+    SUPER CHALLENGE 💪
 
-This is the JS I want you to use to complete this challenge 👇
-- import/export
-- .map()
-- .join()
-- Object destructuring
-- .reduce()
-- Default parameters
+    Render out a card for each of the properties in the propertyForSaleArr array (in the 'properties' folder). Each card should have an image, a property location, a price, a comment and the TOTAL property size in square metres (each object has an array with the size in square metres of the individual rooms).
 
-The HTML and CSS have been done for you. 
-This is the HTML template 👇. Replace everything in UPPERCASE with property data.
+    If no array of properties is passed to getPropertyHtml, the placeholder property stored in placeholderPropertyObj (in the 'properties' folder) should be rendered instead.
 
-<section class="card">
-    <img src="/images/IMAGE">
-    <div class="card-right">
-        <h2>PROPERTY LOCATION</h2>
-        <h3>PRICE GBP</h3>
-        <p>COMMENT</p>
-        <h3>TOTAL SIZE IN SQUARE METRES m&sup2;</h3>
-    </div>
-</section> 
-*/
+    This is the JS I want you to use to complete this challenge 👇
+    - import/export
+    - .map()
+    - .join()
+    - Object destructuring
+    - .reduce()
+    - Default parameters
+
+    The HTML and CSS have been done for you. 
+    This is the HTML template 👇. Replace everything in UPPERCASE with property data.
+
+    <section class="card">
+        <img src="/images/IMAGE">
+        <div class="card-right">
+            <h2>PROPERTY LOCATION</h2>
+            <h3>PRICE GBP</h3>
+            <p>COMMENT</p>
+            <h3>TOTAL SIZE IN SQUARE METRES m&sup2;</h3>
+        </div>
+    </section> 
+    */
 }
 
 /***** Modify 👇 by adding an argument to the function call ONLY. *****/
-document.getElementById('container').innerHTML = getPropertyHtml()
+document.getElementById("container").innerHTML = getPropertyHtml(properties);
