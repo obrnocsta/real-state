@@ -1,13 +1,8 @@
-# Getting Started
+# Real State
 
-Install the dependencies and run the project
+Render out a card for each of the properties in the propertyForSaleArr array (in the 'properties' folder). Each card should have an image, a property location, a price, a comment and the TOTAL property size in square metres (each object has an array with the size in square metres of the individual rooms).
 
-```
-npm install
-npm start
-```
-
-Head over to https://vitejs.dev/ to learn more about configuring vite
+If no array of properties is passed to getPropertyHtml, the placeholder property stored in placeholderPropertyObj (in the 'properties' folder) should be rendered instead.
 
 ## About Scrimba
 
