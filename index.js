@@ -7,14 +7,15 @@ const placeholder = placeholderPropertyObj;
 function getPropertyHtml(properties = [placeholder]) {
   return properties
     .map((p) => {
+      const { image, propertyLocation, priceGBP, comment, roomsM2 } = p;
       return `
         <section class="card">
-            <img src="./images/${p.image}">
+            <img src="./images/${image}">
             <div class="card-right">
-                <h2>${p.propertyLocation}</h2>
-                <h3>$${p.priceGBP}</h3>
-                <p>${p.comment}</p>
-                <h3>${p.roomsM2.reduce((c, t) => (c += t), 0)} m&sup2;</h3>
+                <h2>${propertyLocation}</h2>
+                <h3>$${priceGBP}</h3>
+                <p>${comment}</p>
+                <h3>${roomsM2.reduce((c, t) => (c += t), 0)} m&sup2;</h3>
             </div>
         </section>     
     `;
